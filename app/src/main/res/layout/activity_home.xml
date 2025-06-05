@@ -1,48 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="#03A9F4">
 
-    <TextView
-        android:id="@+id/homeWelcome"
+    <!-- Main Content -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top App Bar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:title="StudySphere"
+            android:titleTextColor="@android:color/white"
+            app:navigationIconTint="@android:color/white"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_menu"
+            app:actionMenuTextColor="@android:color/white"
+            app:iconTint="@android:color/white"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+        <!-- Fragment Container -->
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginBottom="56dp" />
+
+        <!-- Bottom Navigation -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#FFFFFF"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_item_color"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Left Drawer (☰) -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/drawerView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to StudySphere!"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"
-        android:textColor="#000000" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="#FFFFFF"
+        app:menu="@menu/top_app_bar_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color" />
 
-    <Button
-        android:id="@+id/btnLibrary"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#00358E"
-        android:text="📚 Digital Library"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_corner" />
-
-    <Button
-        android:id="@+id/btnGroups"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="👥 Study Groups"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#00358E"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_corner" />
-
-    <Button
-        android:id="@+id/btnProfile"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="#00358E"
-        android:text="⚙️ Profile / Settings"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_corner" />
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
