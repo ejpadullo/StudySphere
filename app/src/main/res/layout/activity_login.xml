@@ -10,6 +10,12 @@
 
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/studysphere"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="match_parent"
